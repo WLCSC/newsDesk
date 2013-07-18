@@ -1,0 +1,19 @@
+<h1>Approving Posts for <%= @organization.name %></h1>
+
+<% if @posts.count > 0 %>
+    <table class="table">
+        <% @posts.each do |post| %>
+            <tr id="post-<%= post.id %>">
+                <td>
+                    <%= form_for post, :remote => true do |f| %> <%= f.hidden_field :approved, :value => true %> <%= f.submit "Approve", :class => 'btn btn-success' %> <% end %>
+                </td>
+                <td>
+                    <h3 class="byline">by <%= link_to post.user.name, post.user %> at <%= nice_datetime post.created_at %></h3>
+                    <%= post.data %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+    <p>No posts to approve!</p>
+<% end %>

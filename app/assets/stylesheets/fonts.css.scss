@@ -1,0 +1,17 @@
+@import url(http://fonts.googleapis.com/css?family=Special+Elite|Open+Sans:400,700,400italic,700italic);
+
+@mixin f-typewriter {
+    font-family: 'Special Elite', cursive;
+}
+
+@mixin f-open-sans {
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    @include f-open-sans;
+}
+
+h1, h2, h3, .nav-header {
+    @include f-typewriter;
+}

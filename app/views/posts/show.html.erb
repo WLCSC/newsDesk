@@ -1,0 +1,46 @@
+<h1><%= @post.organization.name %></h1>
+<h2><%= @post.title %></h2>
+<h3 class="byline">by <%= link_to @post.user.name, @post.user %> at <%= nice_datetime @post.created_at %></h3>
+
+<% unless @post.approved %>
+    <div class="alert alert-error">
+        <strong>This post has not been approved yet!</strong>
+
+        <% if @post.start > Date.today %>
+            <p>This post might start running in <%= distance_of_time_in_words_to_now @post.start %>.</p>
+        <% elsif @post.end < Date.today %>
+            <p>This post would have stopped running <%= distance_of_time_in_words_to_now @post.start %> ago.</p>
+        <% else %>
+            <p>This post could be running if someone approved it.</p>
+        <% end %>
+    </div>
+<% else %>
+
+    <% if @post.start > Date.today %>
+        <div class="alert">This post will start running in <%= distance_of_time_in_words_to_now @post.start %>.</div>
+    <% end %>
+
+    <% if @post.end < Date.today %>
+        <div class="alert">This post stopped running <%= distance_of_time_in_words_to_now @post.start %> ago.</div>
+    <% end %>
+<% end %>
+
+
+<div class="well"><%= @post.data %></div>
+
+<% if can? :manage, @post.organization %>
+    <%= form_for [@post.organization, @post] do |f| %>
+        <% if @post.approved %>
+            <%= f.hidden_field :approved, :value => 'false' %>
+            <%= f.submit "Unapprove", :class => 'btn btn-danger' %>
+        <% else %>
+            <%= f.hidden_field :approved, :value => 'true' %>
+            <%= f.submit "Approve", :class => 'btn btn-success' %>
+        <% end %>
+    <% end %>
+<% end %>
+
+<% if can? :manage, @post %>
+    <%= link_to "#{i 'edit'} Edit Post".html_safe, edit_organization_post_path(@post.organization, @post), :class => 'btn btn-primary' %>
+    <%= link_to "#{i('remove')} Remove Post".html_safe, @post, :method => 'delete', :confirm => "Are you sure?", :class => 'btn btn-inverse' %>
+<% end %>

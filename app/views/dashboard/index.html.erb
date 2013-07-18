@@ -1,0 +1,21 @@
+<h1>Organizations</h1>
+<% if @organizations.count > 0 %>
+    <% @organizations.in_groups_of(3) do |g| %>
+        <div class="row">
+            <% g.each do |org| %>
+                <% if org %>
+                    <%= render :partial => 'organizations/organization', :locals => {org: org} %>
+                <% end %>
+            <% end %>
+        </div>
+    <% end %>
+<% else %>
+    <p>You don't belong to any organizations</p>
+<% end %>
+
+<h1>Posts</h1>
+<% if @posts.count > 0 %>
+    <%= render :partial => 'posts/posts', :locals => {posts: @posts} %>
+<% else %>
+    <p>You don't have any posts running right now.</p>
+<% end %>

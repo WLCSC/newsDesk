@@ -1,0 +1,30 @@
+<h1>Users</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Email address</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.password_hash.nil? ? i('external-link') : i('sign-in')  %> <%= link_to user.name, user %></td>
+        <td><%= user.administrator ? i('cog') : (user.supervisor ? i('group') : i('user')) %></td>
+        <td><%= user.email_address %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if APP_CONFIG[:auth_local] %>
+<br>
+
+<%= link_to 'New User', new_user_path, :class => 'btn btn-primary' %>
+<% end %>

@@ -1,0 +1,8 @@
+<div class="span3">
+    <%= link_to org.name, org, :class => 'btn btn-inverse btn-large btn-block' %>
+    <% if current_user && org.users.include?(current_user) %>
+        <%= link_to "New Post", new_organization_post_path(org), :class => 'btn btn-primary btn-mini btn-block' %>
+    <% else %>
+    <% end %>
+    <p class="desc"><%= org.description %></p>
+</div>

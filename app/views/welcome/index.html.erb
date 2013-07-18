@@ -1,0 +1,24 @@
+<% if current_user %>
+    <h1>Welcome to NewsDesk</h1>
+    <%= link_to "Enter Here", "#", :class => 'btn btn-success btn-large btn-block' %>
+<% else %>
+    <h1>Sign in to NewsDesk</h1>
+
+    <%= form_tag sign_in_path, :class => "form-horizontal" do %>
+        <div class="control-group">
+            <%= label_tag :username, nil, :class => 'control-label' %>
+            <div class="controls">
+                <%= text_field_tag :username, nil, :placeholder => 'Username' %>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <%= label_tag :password, nil, :class => 'control-label' %>
+            <div class="controls">
+                <%= password_field_tag :password, nil, :placeholder => 'Password' %>
+            </div>
+        </div>
+
+        <%= submit_tag "Log In", :class => 'btn btn-primary btn-large' %>
+    <% end %>
+<% end %>

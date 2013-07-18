@@ -1,0 +1,14 @@
+<h1>Build Custom Sets</h1>
+
+<%= form_tag generate_show_path, :method => 'get' do %>
+    <h3>Choose Organizations</h3>
+    <%= collection_check_boxes(:gen, :organization_ids, Organization.all, :id, :name) do |b|
+        ('<div class="span3">' + b.label(class: 'orgbox') { ("<span>" + b.text + "</span>" + b.check_box(class: "check_box")).html_safe } + '</div>').html_safe
+    end
+%>
+<div class="clearfix"></div>
+<h3>Pick a Format</h3>
+<%= select_tag :format, options_for_select([ ["RSS Feed", 'rss'], ['Flyer', 'print'] ]) %>
+
+    <%= submit_tag "Go!", :class => 'btn btn-success btn-largei btn-block' %>
+<% end %>

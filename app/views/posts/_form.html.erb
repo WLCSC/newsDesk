@@ -1,0 +1,39 @@
+<%= form_for [@organization, @post], :html => {:class => 'form-horizontal'} do |f| %>
+    <% if @post.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+            <ul>
+                <% @post.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="control-group">
+        <%= f.label :title, :class => 'control-label' %>
+        <div class="controls"><%= f.text_field :title %></div>
+    </div>
+    <div class="control-group">
+        <%= f.label :data, :class => 'control-label' %>
+        <div class="controls"><%= f.text_area :data %></div>
+    </div>
+    <% if current_user.supervisor || current_user.admin? %>
+        <div class="control-group">
+            <%= f.label :approved, :class => 'control-label' %>
+            <div class="controls"><%= f.check_box :approved %></div>
+        </div>
+    <% end %>
+    <div class="control-group">
+        <%= f.label :start, :class => 'control-label' %>
+        <div class="controls"><%= f.date_select :start %></div>
+    </div>
+    <div class="control-group">
+        <%= f.label :end, :class => 'control-label' %>
+        <div class="controls"><%= f.date_select :end %></div>
+    </div>
+    <div class="actions">
+        <%= f.submit :class => 'btn btn-primary' %>
+    </div>
+<% end %>

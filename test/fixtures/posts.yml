@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  data: MyText
+  user_id: 1
+  approved: false
+  start: 2013-07-15
+  end: 2013-07-15
+  organization_id: 1
+
+two:
+  title: MyString
+  data: MyText
+  user_id: 1
+  approved: false
+  start: 2013-07-15
+  end: 2013-07-15
+  organization_id: 1

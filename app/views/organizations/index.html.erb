@@ -1,0 +1,16 @@
+<h1>All Organizations</h1>
+
+<% @organizations.in_groups_of(3) do |g| %>
+    <div class="row">
+        <% g.each do |org| %>
+            <% if org %>
+                <%= render :partial => 'organization', :locals => {org: org} %>
+            <% end %>
+        <% end %>
+    </div>
+<% end %>
+
+<br/>
+<% if can? :create, Organization %>
+<%= link_to 'Add New Organization', new_organization_path, :class => 'btn btn-primary' %>
+<% end %>

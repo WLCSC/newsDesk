@@ -1,0 +1,151 @@
+body {
+    
+}
+
+#main {
+    padding-top: 40px;
+}
+
+input {
+    font-family: monospace;
+}
+
+#cymk-decor {
+    position: relative;
+    margin: auto;
+    height: 10px;
+    width: 60%;
+    margin-bottom: 12px;
+
+    div {
+        position: relative;
+        height: 10px;
+        width: 25%;
+        float: left;
+    }   
+
+    #c-decor {
+        background-color: #0ff;
+    }
+
+    #m-decor {
+        background-color: #f0f;
+    }
+
+    #y-decor {
+        background-color: #ff0;
+    }
+
+    #k-decor {
+        background-color: #000;
+    }
+}
+
+a {
+    color: #668;
+    text-decoration: underline;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    color: #222;
+    background-color: inherit;
+}
+
+.btn {
+    @include f-open-sans;
+    text-decoration: none;
+}
+
+.sidehead {
+    font-size: 24px;
+    line-height: 26px;
+    text-align: center;
+    margin-bottom: 0;
+    vertical-align: bottom;
+}
+
+.span2 li {
+    text-align: right;
+}
+
+.nav-header {
+    color: #333;
+    text-shadow: none;
+    font-size: 14px;
+    padding-bottom: 0;
+}
+
+#signin {
+    padding: 16px;
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    left: calc(50% - 150px);
+    top: calc(50% - 150px);
+    background-color: #ddd;
+    text-align: center;
+
+    h1 {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .form-horizontal {
+        .control-label {
+            width: 60px;
+        }
+
+        .controls {
+            margin-left: 80px;
+        }
+    }
+}   
+
+#flashbox {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 300px;
+}
+
+.desc {
+    font-style: italic;
+    color: #666;
+    margin: auto;
+    text-align: center;
+}
+
+p.byline {
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: 0px;
+}
+
+h3.byline {
+    font-style: italic;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 16px;
+}
+
+.alert p {
+    margin-bottom: 0px;
+}   
+
+.nav-pills > li > a {
+    text-decoration: none;
+    background-color: #eee;
+    color: #444;
+    border: thin solid #ddd;
+}
+
+.orgbox {
+    span {
+        margin-right: 4px;
+        vertical-align: bottom;
+    }
+
+    input {
+        margin-top: 0px;
+    }
+}

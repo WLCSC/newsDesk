@@ -1,0 +1,24 @@
+<h1><%= @organization.name %></h1>
+<p class="desc" style="text-align: left;">
+  <%= @organization.description %>
+</p>
+
+<h2>Posts</h2>
+<% if @posts.count > 0 %>
+    <%= render :partial => 'posts/posts', :locals => {:posts => @posts} %>
+<% else %>
+    <p>No posts to show for today!</p>
+<% end %>
+
+<% if @organization.users.include? current_user %>
+    <%= link_to "New Post", new_organization_post_path(@organization), :class => 'btn btn-primary' %>
+<% end %>
+
+<%= link_to "All Posts", organization_posts_path(@organization), :class => 'btn btn-inverse' %>
+
+<h2>Assigned Users & Groups</h2>
+
+<%= pills_for @organization.users %>
+<% if can? :manage, @organization %>
+    <%= link_to "Manage Users", organization_assignments_path(@organization), :class => 'btn btn-inverse' %>
+<% end %>

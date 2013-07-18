@@ -1,0 +1,8 @@
+<h1><%= @user.name %></h1>
+
+<%= @user.administrator ? i('cog') + " Administrator" : (@user.supervisor ? i('group') + " Supervisor" : i('user') + " User") %>
+
+<h2>Posts</h2>
+<%= render :partial => 'posts/posts', :locals => {posts: @user.posts} %>
+
+<%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-info' %>
