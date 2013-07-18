@@ -6,8 +6,11 @@ class GenerateController < ApplicationController
   def show
       @organizations = Organization.where(:id => params[:gen][:organization_ids])
       @posts = []
+      @posts_by_org = {}
       @organizations.each do |o|
-          @posts << o.posts.where(:approved => true).where('start <= ? AND end >= ?', Date.today, Date.today).all
+          p = o.posts.where(:approved => true).where('start <= ? AND end >= ?', Date.today, Date.today)
+          @posts << p.all
+          @posts_by_org[o] = p
       end
       @posts.flatten!
 
