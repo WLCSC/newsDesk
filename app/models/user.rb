@@ -1,3 +1,4 @@
+require "bcrypt"
 class User < ActiveRecord::Base
     include BootstrapHelper
 	validates :username, :presence => true

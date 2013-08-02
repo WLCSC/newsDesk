@@ -57,3 +57,5 @@ gem "mysql2"
 gem "sqlite3"
 gem "resque"
 gem "unicorn"
+
+gem "thin"
