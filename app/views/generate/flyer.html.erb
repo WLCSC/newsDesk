@@ -1,0 +1,9 @@
+<h1>Announcements</h1>
+
+<% @organizations.each do |o| %>
+    <h3><%= o.name %></h3>
+
+    <% @posts_by_org[o].each do |p| %>
+        <strong><%= p.title %></strong> - <%= p.data %>
+    <% end %>
+<% end %>

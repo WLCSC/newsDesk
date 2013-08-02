@@ -3,6 +3,6 @@
 <%= render :partial => 'posts', :locals => {:posts => @posts} %>
 <br>
 
-<% if @organization && @organization.users.include?(current_user) %>
+<% if @organization && @organization.users.include?(current_user) || current_user.admin? %>
     <%= link_to 'New Post', new_organization_post_path(@organization), :class => 'btn btn-primary' %>
 <% end %>

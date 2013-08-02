@@ -54,6 +54,7 @@ a {
 .btn {
     @include f-open-sans;
     text-decoration: none;
+    background-image: none !important;
 }
 
 .sidehead {

@@ -8,7 +8,8 @@
                     <%= form_for post, :remote => true do |f| %> <%= f.hidden_field :approved, :value => true %> <%= f.submit "Approve", :class => 'btn btn-success' %> <% end %>
                 </td>
                 <td>
-                    <h3 class="byline">by <%= link_to post.user.name, post.user %> at <%= nice_datetime post.created_at %></h3>
+                    <h4><%= post.title %></h4>
+                    <h4 class="byline">by <%= link_to post.user.name, post.user %> at <%= nice_datetime post.created_at %></h4>
                     <%= post.data %>
                 </td>
             </tr>

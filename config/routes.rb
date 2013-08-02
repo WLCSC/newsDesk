@@ -1,6 +1,9 @@
 Newsdesk::Application.routes.draw do
-  get "generate/index"
-  get "generate/show"
+  get "generate" => 'generate#index'
+  get "generate/rss"
+  get "generate/flyer"
+
+
   get "dashboard" => 'dashboard#index', :as => 'dashboard'
   resources :feeds
   resources :posts

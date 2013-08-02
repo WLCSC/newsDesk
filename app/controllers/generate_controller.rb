@@ -1,10 +1,31 @@
 class GenerateController < ApplicationController
-    skip_before_filter :check_for_user, :only => ['show']
+    skip_before_action :check_for_user
+    before_action :build_collection, :except => [:index]
+
   def index
   end
 
+  def rss
+      render 'rss', :format => 'atom', :layout => false
+  end
+
+  def flyer
+  end
+
   def show
-      @organizations = Organization.where(:id => params[:gen][:organization_ids])
+      
+      case params[:format]
+      when 'rss'
+          render :format => 'atom', :layout => false
+            when 'print'
+      else
+      end
+  end
+
+  private 
+
+  def build_collection
+    @organizations = Organization.where(:id => params[:gen][:organization_ids])
       @posts = []
       @posts_by_org = {}
       @organizations.each do |o|
@@ -13,12 +34,5 @@ class GenerateController < ApplicationController
           @posts_by_org[o] = p
       end
       @posts.flatten!
-
-      case params[:format]
-      when 'rss'
-          render :format => 'atom', :layout => false
-            when 'print'
-      else
-      end
   end
 end

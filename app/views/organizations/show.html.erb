@@ -10,11 +10,14 @@
     <p>No posts to show for today!</p>
 <% end %>
 
-<% if @organization.users.include? current_user %>
+<% if @organization.users.include?(current_user) || current_user.admin? %>
     <%= link_to "New Post", new_organization_post_path(@organization), :class => 'btn btn-primary' %>
+    <%= link_to "All Posts", organization_posts_path(@organization), :class => 'btn btn-inverse' %>
+    <% if current_user.supervisor %>
+        <%= link_to "Approve Posts", approve_organization_path(@organization), :class => 'btn btn-success' %>
+    <% end %>
 <% end %>
 
-<%= link_to "All Posts", organization_posts_path(@organization), :class => 'btn btn-inverse' %>
 
 <h2>Assigned Users & Groups</h2>
 
